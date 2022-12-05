@@ -174,7 +174,7 @@ $comboBox_AD_site.add_Click({
 })
 
 $comboBox_AD_site.add_SelectedValueChanged({
-	if($comboBox_AD_site.text -eq "ZF"){
+	if($comboBox_AD_site.text -eq "Organiztion 1"){
 		$Global:Location = $comboBox_AD_site
 		$global:Domain_Controller = "DC Server"
 		[string]$Global:SiteName="SCCM Site"
@@ -183,7 +183,7 @@ $comboBox_AD_site.add_SelectedValueChanged({
 		citrix_pkg_tables
 		AppV_pkg_tables
 		SCCM_pkg_tables
-	}elseif($comboBox_AD_site.text -eq "GO"){
+	}elseif($comboBox_AD_site.text -eq "Organiztion 2"){
 		$Global:Location = $comboBox_AD_site
 		$global:Domain_Controller = "DC Server"
 		[string]$Global:SiteName="SCCM Site"
@@ -192,7 +192,7 @@ $comboBox_AD_site.add_SelectedValueChanged({
 		citrix_pkg_tables
 		AppV_pkg_tables
 		SCCM_pkg_tables
-	}elseif($comboBox_AD_site.text -eq "KGMK"){
+	}elseif($comboBox_AD_site.text -eq "Organiztion 3"){
 		$global:Location = $comboBox_AD_site
 		$global:Domain_Controller = "DC Server"
 		[string]$Global:SiteName="SCCM Site"
@@ -201,7 +201,7 @@ $comboBox_AD_site.add_SelectedValueChanged({
 		citrix_pkg_tables
 		AppV_pkg_tables
 		SCCM_pkg_tables
-	}elseif($comboBox_AD_site.text -eq "Saratov"){
+	}elseif($comboBox_AD_site.text -eq "Organiztion 4"){
 		$global:Location = $comboBox_AD_site
 		$global:Domain_Controller = "DC Server"
 		[string]$Global:SiteName="SCCM Site"
@@ -216,7 +216,7 @@ $comboBox_AD_site.add_SelectedValueChanged({
 [void]$frmMain.Controls.Add($comboBox_AD_site)
 #$groupboxTextbox.Controls.Add($comboBox_AD_site);
 #------------------------------------------------------------------------
-[array]$Array = "Organization 1","Organization 2" | sort
+[array]$Array = "Organization 1","Organization 2","Organization 3","Organization 4" | sort
 ForEach ($Item in $Array) { $comboBox_AD_site.Items.Add($Item) } #заполнение combobox
 $comboBox_AD_site.SelectedIndex = 3 # Select the first item by default
 
