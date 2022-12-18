@@ -982,7 +982,7 @@ $groupboxTextbox.Controls.Add($btn_list_account);
 #создание запроса с кэша
 function Fill-List_cache {
 	$s = $textBox0.Text
-    $str = Get-ADUser -Filter {SamAccountName -like $s } -Searchbase "DC=npr,DC=nornick,DC=ru" | select SamAccountName
+    $str = Get-ADUser -Filter {SamAccountName -like $s } -Searchbase "DC=domain,DC=ru" | select SamAccountName
 	$listSA.Items.Clear()
 	if ($str -eq $null){
 		if($progressBar.Text -ne $progressBar_user_not_found_in_AD){
@@ -1008,7 +1008,7 @@ function Fill-List_cache {
 			$userinfo_ListSA_LockedOut = $userinfo_ListSA.LockedOut
 			if($userinfo_ListSA.EmailAddress){$listSA.Items[$listSA.SelectedItems.Count-1].SubItems.Add($userinfo_ListSA.EmailAddress)}else{$listSA.Items[$listSA.SelectedItems.Count-1].SubItems.Add(@{})}
 			if($userinfo_ListSA.telephoneNumber){$listSA.Items[$listSA.SelectedItems.Count-1].SubItems.Add($userinfo_ListSA.telephoneNumber)}else{$listSA.Items[$listSA.SelectedItems.Count-1].SubItems.Add(@{})}
-			if($userinfo_ListSA.CanonicalName){$listSA.Items[$listSA.SelectedItems.Count-1].SubItems.Add($userinfo_ListSA.CanonicalName.replace("npr.nornick.ru","npr"))}else{$listSA.Items[$listSA.SelectedItems.Count-1].SubItems.Add(@{})}
+			if($userinfo_ListSA.CanonicalName){$listSA.Items[$listSA.SelectedItems.Count-1].SubItems.Add($userinfo_ListSA.CanonicalName.replace("domain.ru","domainName"))}else{$listSA.Items[$listSA.SelectedItems.Count-1].SubItems.Add(@{})}
 			$listSA.Items[$listSA.SelectedItems.Count-1].SubItems.Add("$userinfo_ListSA_Enabled")
 			$listSA.Items[$listSA.SelectedItems.Count-1].SubItems.Add("$userinfo_ListSA_LockedOut")
 #			if($userinfo_ListSA_LockedOut){$listSA.Items[$listSA.SelectedItems.Count-1].SubItems.Add("$false")}else{$listSA.Items[$listSA.SelectedItems.Count-1].SubItems.Add("$true")}
@@ -1021,8 +1021,8 @@ function Fill-List_cache {
 #создание запроса
 function Fill-List ($Mask = "*") {
 	$s = $textBox0.Text + "*"
-    $str = Get-ADUser -Filter {SamAccountName -like $s -or DisplayName -like $s } -Searchbase "DC=npr,DC=nornick,DC=ru" | select SamAccountName
-	#if($str -eq $null){ $str = Get-ADUser -Filter { DisplayName -like $s } -Searchbase "DC=npr,DC=nornick,DC=ru" | select SamAccountName }
+    $str = Get-ADUser -Filter {SamAccountName -like $s -or DisplayName -like $s } -Searchbase "DC=domain,DC=ru" | select SamAccountName
+	#if($str -eq $null){ $str = Get-ADUser -Filter { DisplayName -like $s } -Searchbase "DC=domain,DC=ru" | select SamAccountName }
 	$listSA.Items.Clear()
 	if ($str -eq $null){
 		if($progressBar.Text -ne $progressBar_user_not_found_in_AD){
@@ -1048,7 +1048,7 @@ function Fill-List ($Mask = "*") {
 			$userinfo_ListSA_LockedOut = $userinfo_ListSA.LockedOut
 			if($userinfo_ListSA.EmailAddress){$listSA.Items[$listSA.SelectedItems.Count-1].SubItems.Add($userinfo_ListSA.EmailAddress)}else{$listSA.Items[$listSA.SelectedItems.Count-1].SubItems.Add(@{})}
 			if($userinfo_ListSA.telephoneNumber){$listSA.Items[$listSA.SelectedItems.Count-1].SubItems.Add($userinfo_ListSA.telephoneNumber)}else{$listSA.Items[$listSA.SelectedItems.Count-1].SubItems.Add(@{})}
-			if($userinfo_ListSA.CanonicalName){$listSA.Items[$listSA.SelectedItems.Count-1].SubItems.Add($userinfo_ListSA.CanonicalName.replace("npr.nornick.ru","npr"))}else{$listSA.Items[$listSA.SelectedItems.Count-1].SubItems.Add(@{})}
+			if($userinfo_ListSA.CanonicalName){$listSA.Items[$listSA.SelectedItems.Count-1].SubItems.Add($userinfo_ListSA.CanonicalName.replace("domain.ru","domainName"))}else{$listSA.Items[$listSA.SelectedItems.Count-1].SubItems.Add(@{})}
 			$listSA.Items[$listSA.SelectedItems.Count-1].SubItems.Add("$userinfo_ListSA_Enabled")
 			$listSA.Items[$listSA.SelectedItems.Count-1].SubItems.Add("$userinfo_ListSA_LockedOut")
 #			if($userinfo_ListSA_LockedOut){$listSA.Items[$listSA.SelectedItems.Count-1].SubItems.Add("$false")}else{$listSA.Items[$listSA.SelectedItems.Count-1].SubItems.Add("$true")}
